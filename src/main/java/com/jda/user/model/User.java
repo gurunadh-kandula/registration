@@ -4,7 +4,8 @@ public class User {
 	  private String username;
 	  private String password;
 	  private String firstname;
-	  private String lastname;
+	
+	private String lastname;
 	  private String email;
 	  private String address;
 	  private int phone;
@@ -50,4 +51,9 @@ public class User {
 	  public void setPhone(int phone) {
 	  this.phone = phone;
 	  }
+	  @Override
+		public String toString() {
+			return "User [username=" + username + ", password=" + password + ", firstname=" + firstname + ", lastname="
+			      + lastname + ", email=" + email + ", address=" + address + ", phone=" + phone + "]";
+		}
 	}
