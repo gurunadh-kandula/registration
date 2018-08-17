@@ -4,6 +4,12 @@
         <head>
             <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
             <title>Registration</title>
+            <style>
+.error {
+color: #ff0000;
+font-style: italic;
+}
+</style>
         </head>
         <body>
             <form:form id="regForm" modelAttribute="user" action="registerProcess" method="post">
@@ -15,6 +21,7 @@
                         <td>
                             <form:input path="username" name="username" id="username" />
                         </td>
+                        <td><form:errors path="username" cssClass="error" /></td>
                     </tr>
                     <tr>
                         <td>
@@ -23,6 +30,7 @@
                         <td>
                             <form:password path="password" name="password" id="password" />
                         </td>
+                          <td><form:errors path="password" cssClass="error" /></td>
                     </tr>
                     <tr>
                         <td>
@@ -31,6 +39,7 @@
                         <td>
                             <form:input path="firstname" name="firstname" id="firstname" />
                         </td>
+                        <td><form:errors path="firstname" cssClass="error" /></td>
                     </tr>
                     <tr>
                         <td>
@@ -39,6 +48,7 @@
                         <td>
                             <form:input path="lastname" name="lastname" id="lastname" />
                         </td>
+                             <td><form:errors path="lastname" cssClass="error" /></td>
                     </tr>
                     <tr>
                         <td>
@@ -47,6 +57,7 @@
                         <td>
                             <form:input path="email" name="email" id="email" />
                         </td>
+                           <td><form:errors path="email" cssClass="error" /></td>
                     </tr>
                     <tr>
                         <td>
@@ -55,6 +66,7 @@
                         <td>
                             <form:input path="address" name="address" id="address" />
                         </td>
+                              <td><form:errors path="address" cssClass="error" /></td>
                     </tr>
                     <tr>
                         <td>
@@ -63,12 +75,14 @@
                         <td>
                             <form:input path="phone" name="phone" id="phone" />
                         </td>
+                        <td><form:errors path="phone" cssClass="error" /></td>
                     </tr>
                     <tr>
                         <td></td>
                         <td>
                             <form:button id="register" name="register">Register</form:button>
                         </td>
+                        
                     </tr>
                     <tr></tr>
                     <tr>

@@ -20,10 +20,13 @@
         <property name="dataSource" ref="datasource" />
     </bean>
      <bean id="userService" class="com.jda.user.service.UserServiceImpl" />
-    <bean id="datasource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+   
+     <bean id="datasource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
         <property name="driverClassName" value="com.mysql.jdbc.Driver" />
         <property name="url" value="jdbc:mysql://10.0.0.160/db10007" />
         <property name="username" value="u10007" />
         <property name="password" value="qqdDbor60y" />
+        
     </bean>
+ 	<bean id="userValidator" class="com.jda.user.validator.UserValidator" /> 
 	</beans>
