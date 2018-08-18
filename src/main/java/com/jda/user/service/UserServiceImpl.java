@@ -9,6 +9,8 @@ import javax.sql.DataSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
+
+import com.jda.user.model.ForgotPassword;
 import com.jda.user.model.Login;
 import com.jda.user.model.User;
 
@@ -28,7 +30,11 @@ public class UserServiceImpl implements  UserService{
 	    List<User> users = jdbcTemplate.query(sql, new UserMapper());
 	    return users.size() > 0 ? users.get(0) : null;
 	    }
-	  }
+	   public void newPassword(ForgotPassword forgot) {
+	   	String sql="update users set password='"+forgot.getNewpassword() +"'  where username='"+forgot.getUsername()+"'";
+			jdbcTemplate.update(sql);
+		}
+ }
 	  class UserMapper implements RowMapper<User> {
 	  public User mapRow(ResultSet rs, int arg1) throws SQLException {
 	    User user = new User();
