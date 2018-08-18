@@ -11,8 +11,29 @@ font-style: italic;
 }
 </style>
         </head>
+        <script>  
+function validateform()  
+{  
+var x=document.myform.email.value;  
+var name=document.myform.username.value;  
+var password=document.myform.password.value;  
+var atposition=x.indexOf("@");  
+var dotposition=x.lastIndexOf(".");  
+if (atposition<1 || dotposition<atposition+2 || dotposition+2>=x.length){  
+  alert("Please enter a valid e-mail address");  
+  return false;  
+  if (name==null || name==""){  
+	  alert("Name can't be blank");  
+	  return false;  
+	}else if(password.length<6){  
+	  alert("Password must be at least 6 characters long.");  
+	  return false;  
+	  }  
+	}  
+  }  
+</script>
         <body>
-            <form:form id="regForm" modelAttribute="user" action="registerProcess" method="post">
+            <form:form id="regForm" name="myform" modelAttribute="user" action="registerProcess" method="post" onsubmit="return validateform(); ">
                 <table align="center">
                     <tr>
                         <td>
@@ -80,7 +101,7 @@ font-style: italic;
                     <tr>
                         <td></td>
                         <td>
-                            <form:button id="register" name="register">Register</form:button>
+                         <input type="submit" value="Register" />
                         </td>
                         
                     </tr>
