@@ -12,6 +12,7 @@ import org.springframework.jdbc.core.RowMapper;
 
 import com.jda.user.model.ForgotPassword;
 import com.jda.user.model.Login;
+import com.jda.user.model.ResetPassword;
 import com.jda.user.model.User;
 
 public class UserServiceImpl implements  UserService{
@@ -33,6 +34,19 @@ public class UserServiceImpl implements  UserService{
 	   public void newPassword(ForgotPassword forgot) {
 	   	String sql="update users set password='"+forgot.getNewpassword() +"'  where username='"+forgot.getUsername()+"'";
 			jdbcTemplate.update(sql);
+		}
+		
+		public void newPassword(ResetPassword reset) {
+			String sql="update users set password='"+reset.getNewpassword() +"'  where username='"+reset.getUsername()+"'";
+			jdbcTemplate.update(sql);
+			
+		}
+	
+		public User validateUser(ResetPassword reset) {
+			 String sql = "select * from users where username='" + reset.getUsername() + "' and password='" + reset.getPassword()
+		    + "'";
+		    List<User> users = jdbcTemplate.query(sql, new UserMapper());
+		    return users.size() > 0 ? users.get(0) : null;
 		}
  }
 	  class UserMapper implements RowMapper<User> {

@@ -18,6 +18,15 @@
                 <td><a href="home.jsp">Home</a>
                 </td>
             </tr>
+            <tr>
+                <td><a href="reset">ResetPassword</a>
+                </td>
+            </tr>
         </table>
+        <table align="center">
+		<tr>
+			<td style="font-style: italic; color: red;">${message}</td>
+		</tr>
+	</table>
     </body>
     </html>
