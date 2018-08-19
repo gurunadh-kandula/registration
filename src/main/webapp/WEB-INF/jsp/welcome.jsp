@@ -6,7 +6,7 @@
         <title>Welcome</title>
     </head>
     <body>
-        <table>
+        <table align="center">
             <tr>
                 <td>Welcome ${firstname}</td>
             </tr>
@@ -21,6 +21,8 @@
             <tr>
                 <td><a href="reset">ResetPassword</a>
                 </td>
+                <td></td>
+               <td> <a href="logout.jsp">Logout</a></td>
             </tr>
         </table>
         <table align="center">

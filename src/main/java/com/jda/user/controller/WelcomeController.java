@@ -13,7 +13,15 @@ public class WelcomeController {
 public ModelAndView  showWelcome(HttpServletRequest req,HttpServletResponse resp)
 {
 	HttpSession session=req.getSession();
+	if(session.getAttribute("username")!=null)
+	{
 	String username=(String) session.getAttribute("username");
 	return new ModelAndView("welcome","firstname",username);
 }
+	else
+	{
+		return new ModelAndView("redirect:/login");
+	}
+		}
+	
 }

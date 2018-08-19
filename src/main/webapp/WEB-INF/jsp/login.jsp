@@ -7,6 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Login</title>
 </head>
+
 <body>
 	<form:form id="loginForm" modelAttribute="login" action="loginProcess"
 		method="post">
