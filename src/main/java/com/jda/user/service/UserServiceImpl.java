@@ -9,6 +9,8 @@ import javax.sql.DataSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+
 
 import com.jda.user.model.ForgotPassword;
 import com.jda.user.model.Login;
@@ -20,13 +22,14 @@ public class UserServiceImpl implements  UserService{
 	  DataSource datasource;
 	  @Autowired
 	  JdbcTemplate jdbcTemplate;
+		
 	  public void register(User user) {
 	    String sql = "insert into users values(?,?,?,?,?,?,?)";
 	    jdbcTemplate.update(sql, new Object[] { user.getUsername(), user.getPassword(), user.getFirstname(),
 	    user.getLastname(), user.getEmail(), user.getAddress(), user.getPhone() });
 	    }
 	    public User validateUser(Login login) {
-	    String sql = "select * from users where username='" + login.getUsername() + "' and password='" + login.getPassword()
+	   String sql = "select * from users where username='" + login.getUsername() + "' and password='" + login.getPassword()
 	    + "'";
 	    List<User> users = jdbcTemplate.query(sql, new UserMapper());
 	    return users.size() > 0 ? users.get(0) : null;
@@ -48,6 +51,14 @@ public class UserServiceImpl implements  UserService{
 		    List<User> users = jdbcTemplate.query(sql, new UserMapper());
 		    return users.size() > 0 ? users.get(0) : null;
 		}
+		/*public String generator(String password) {
+
+			BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder(11);
+			String hashedPassword = passwordEncoder.encode(password);
+			System.out.println(hashedPassword);
+			return hashedPassword;
+
+		}*/
  }
 	  class UserMapper implements RowMapper<User> {
 	  public User mapRow(ResultSet rs, int arg1) throws SQLException {

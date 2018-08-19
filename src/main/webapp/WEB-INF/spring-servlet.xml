@@ -29,4 +29,8 @@
         
     </bean>
  	<bean id="userValidator" class="com.jda.user.validator.UserValidator" /> 
+ 	<bean id="encoder" 
+	class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder">
+	<constructor-arg name="strength" value="11" />
+  </bean>
  	</beans>
