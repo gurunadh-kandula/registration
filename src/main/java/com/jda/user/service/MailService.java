@@ -11,7 +11,7 @@ public class MailService {
 	public  void sendMail(String toAddress, String Subject, String body) 
 	{
 		SimpleMailMessage passwordResetEmail = new SimpleMailMessage();
-		passwordResetEmail.setFrom("gurunadh002@gmail.com");
+		passwordResetEmail.setFrom("shravanbossu@gmail.com");
 		passwordResetEmail.setTo(toAddress);
 		passwordResetEmail.setSubject("Password Reset Request");
 		passwordResetEmail.setText(body);
