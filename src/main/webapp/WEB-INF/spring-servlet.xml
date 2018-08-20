@@ -28,6 +28,23 @@
         <property name="password" value="qqdDbor60y" />
         
     </bean>
+    <bean id ="mailService" class= "com.jda.user.service.MailService"></bean>
+    <bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
+		<!-- SMTP settings -->
+		<property name="host" value="smtp.gmail.com" />
+		<property name="port" value="587" />
+		<property name="username" value="gurunadh002@gmail.com" />
+		<property name="password" value="omsairamom003@" />
+
+		<property name="javaMailProperties">
+			<!-- additional properties specific to JavaMail -->
+			<props>
+				<prop key="mail.transport.protocol">smtp</prop>
+				<prop key="mail.smtp.auth">true</prop>
+				<prop key="mail.smtp.starttls.enable">true</prop>
+			</props>
+		</property>
+	</bean>
  	<bean id="userValidator" class="com.jda.user.validator.UserValidator" /> 
  	<bean id="encoder" 
 	class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder">

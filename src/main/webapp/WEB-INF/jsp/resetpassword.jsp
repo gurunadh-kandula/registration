@@ -4,45 +4,24 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=US-ASCII">
-<title>Forgotpassword</title>
+<title>reset password</title>
  </head>
         <body>
-            <form:form id="resetForm" modelAttribute="reset" action="resetProcess" method="post">
-                <table align="center">
-                    <tr>
-                        <td>
-                            <form:label path="username">Username: </form:label>
-                        </td>
-                        <td>
-                            <form:input path="username" name="username" id="username" />
-                        </td>
-                         <td><form:errors path="username" cssClass="error" /></td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <form:label path="password">password: </form:label>
-                        </td>
-                        <td>
-                            <form:input path="password" name="password" id="password" />
-                        </td>
-                         <td><form:errors path="password" cssClass="error" /></td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <form:label path="newpassword">new password:</form:label>
-                        </td>
-                        <td>
-                            <form:password path="newpassword" name="newpassword" id="newpassword" />
-                        </td>
-                                <td><form:errors path="newpassword" cssClass="error" /></td>
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td align="left">
-                            <form:button id="submit" name="submit">Submit</form:button>
-                        </td>
-                    </tr>
-                    </table>
+            <form:form id="resetForm"   action="resetProcess" method="post">
+            <input type="hidden" name="resetToken" value="${resetToken}">
+            	<table style="with: 50%">
+            	
+			<tr>
+				<td>newPassword</td>
+				<td><input type="text" name="newpassword" /></td>
+			</tr>
+	<tr>
+				<td>Confirm newPassword</td>
+				<td><input type="text" name="Confirm newPassword" /></td>
+			</tr>
+		</table>
+		<input type="submit" value="Submit" />
+	</form>
             </form:form>
             <table align="center">
                 <tr>

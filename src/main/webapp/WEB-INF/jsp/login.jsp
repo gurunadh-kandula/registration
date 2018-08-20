@@ -6,27 +6,31 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Login</title>
+  <link rel="stylesheet" href="/style.css">
 </head>
 
-<body>
+<body >
+<div class="login">
+  <div class="login-triangle"></div>
+  <h2 class="login-header">Log in</h2>
 	<form:form id="loginForm" modelAttribute="login" action="loginProcess"
-		method="post">
+		method="post"  class="login-container">
 		<table align="center">
 			<tr>
 				<td><form:label path="username">Username: </form:label></td>
-				<td><form:input path="username" name="username" id="username" />
+				<td><form:input path="username" name="username"  id="username"  />
 				</td>
 				<td><form:errors path="username" cssClass="error" /></td>
 			</tr>
 			<tr>
 				<td><form:label path="password">Password:</form:label></td>
 				<td><form:password path="password" name="password"
-						id="password" /></td>
+						id="password"  /></td>
 				<td><form:errors path="password" cssClass="error" /></td>
 			</tr>
 			<tr>
 				<td></td>
-				<td align="left"><form:button id="login" name="login">Login</form:button>
+				<td align="left">  <input type="submit" value="Login" />
 				</td>
 			</tr>
 			<tr></tr>
