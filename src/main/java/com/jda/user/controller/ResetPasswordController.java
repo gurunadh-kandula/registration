@@ -43,13 +43,15 @@ public class ResetPasswordController {
 	}
 
 	@RequestMapping(value = "/resetProcess", method = RequestMethod.POST)
-	public void  addUser(HttpServletRequest request, HttpServletResponse response,
+	public ModelAndView  addUser(HttpServletRequest request, HttpServletResponse response,
 	      @RequestParam ("newpassword")String password ,@RequestParam Map<String, String> requestParams) throws IOException {
 		logger.info(password);
 		System.out.println();
 		String token = requestParams.get("resetToken");
 		ModelAndView mav = null;
 		 userService.newPassword(password, token);
+		mav= new ModelAndView("redirect:/login");
+		return mav;
 	 
 }
 }
