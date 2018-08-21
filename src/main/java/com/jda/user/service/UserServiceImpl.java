@@ -10,6 +10,7 @@ import javax.sql.DataSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.jda.user.model.ForgotPassword;
@@ -24,13 +25,13 @@ public class UserServiceImpl implements  UserService{
 	  JdbcTemplate jdbcTemplate;
 	  @Transactional
 	  public void register(User user) {
-	    String sql = "insert into users values(?,?,?,?,?,?,?)";
-	    jdbcTemplate.update(sql, new Object[] { user.getUsername(), user.getPassword(), user.getFirstname(),
-	    user.getLastname(), user.getEmail(), user.getAddress(), user.getPhone() });
+	    String sql = "insert into users values(?,?,?,?,?,?,?,?)";
+	    jdbcTemplate.update(sql, new Object[] { user.getUsername(),generator(user.getPassword()), user.getFirstname(),
+	    user.getLastname(), user.getEmail(), user.getAddress(), user.getPhone(),user.getToken()});
 	    }
 	  
 	    public User validateUser(Login login) {
-	   String sql = "select * from users where username='" + login.getUsername() + "' and password='" + login.getPassword()
+	   String sql = "select * from users where username='" + login.getUsername() 
 	    + "'";
 	    List<User> users = jdbcTemplate.query(sql, new UserMapper());
 	    return users.size() > 0 ? users.get(0) : null;
@@ -43,7 +44,7 @@ public class UserServiceImpl implements  UserService{
 	 	    }
 	    @Transactional
 	   public void newPassword(String password,String token) {
-	   	String sql="update users set password='"+password +"'  where token='"+token+"'";
+	   	String sql="update users set password='"+generator(password)+"'  where token='"+token+"'";
 			jdbcTemplate.update(sql);
 		}
 		
@@ -59,14 +60,14 @@ public class UserServiceImpl implements  UserService{
 		    List<User> users = jdbcTemplate.query(sql, new UserMapper());
 		    return users.size() > 0 ? users.get(0) : null;
 		}*/
-		/*public String generator(String password) {
+		public String generator(String password) {
 
 			BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder(11);
 			String hashedPassword = passwordEncoder.encode(password);
 			System.out.println(hashedPassword);
 			return hashedPassword;
 
-		}*/
+		}
 	
 		public User forgetPassword(String email) {
 			  String sql = "select * from users where email='" + email+ "'";

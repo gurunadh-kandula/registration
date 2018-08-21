@@ -9,6 +9,7 @@ public interface UserService {
 	  void register(User user);
 	  User validateUser(Login login);
 	  void newPassword(String password,String token);
+	  String generator(String password);
 	/*void newPassword(ResetPassword reset);*/
 	/*User validateUser(ResetPassword reset);*/
 	User  forgetPassword(String username);
