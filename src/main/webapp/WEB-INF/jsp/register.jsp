@@ -1,9 +1,11 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
     <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1" %>
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
         <html>
         <head>
             <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
             <title>Registration</title>
+              <link  href="<c:url  value="/css/style2.css" /> " rel="stylesheet"   type="text/css" >
             <style>
 .error {
 color: #ff0000;
@@ -33,68 +35,71 @@ if (atposition<1 || dotposition<atposition+2 || dotposition+2>=x.length){
   }  
 </script>
         <body>
+        <div class="login">
+  <div class="login-triangle"></div>
+  <h2 class="login-header">Registration</h2>
             <form:form id="regForm" name="myform" modelAttribute="user" action="registerProcess" method="post" onsubmit="return validateform(); ">
                 <table align="center">
                     <tr>
                         <td>
-                            <form:label path="username">Username</form:label>
+                            <form:label path="username"></form:label>
                         </td>
                         <td>
-                            <form:input path="username" name="username" id="username" />
+                            <form:input path="username" placeholder="Username" name="username" id="username" />
                         </td>
                         <td><form:errors path="username" cssClass="error" /></td>
                     </tr>
                     <tr>
                         <td>
-                            <form:label path="password">Password</form:label>
+                            <form:label path="password"></form:label>
                         </td>
                         <td>
-                            <form:password path="password" name="password" id="password" />
+                            <form:password path="password" placeholder="Password" name="password" id="password" />
                         </td>
                           <td><form:errors path="password" cssClass="error" /></td>
                     </tr>
                     <tr>
                         <td>
-                            <form:label path="firstname">FirstName</form:label>
+                            <form:label path="firstname"></form:label>
                         </td>
                         <td>
-                            <form:input path="firstname" name="firstname" id="firstname" />
+                            <form:input path="firstname" placeholder="FirstName" name="firstname" id="firstname" />
                         </td>
                         <td><form:errors path="firstname" cssClass="error" /></td>
                     </tr>
                     <tr>
                         <td>
-                            <form:label path="lastname">LastName</form:label>
+                            <form:label path="lastname"></form:label>
                         </td>
                         <td>
-                            <form:input path="lastname" name="lastname" id="lastname" />
+                            <form:input path="lastname"  placeholder="LastName" name="lastname" id="lastname" />
                         </td>
                              <td><form:errors path="lastname" cssClass="error" /></td>
                     </tr>
                     <tr>
                         <td>
-                            <form:label path="email">Email</form:label>
+                            <form:label path="email"></form:label>
                         </td>
                         <td>
-                            <form:input path="email" name="email" id="email" />
+                            <form:input path="email" placeholder="Email" name="email" id="email" />
                         </td>
                            <td><form:errors path="email" cssClass="error" /></td>
                     </tr>
                     <tr>
                         <td>
-                            <form:label path="address">Address</form:label>
+                            <form:label path="address"></form:label>
                         </td>
-                        <td>
-                            <form:input path="address" name="address" id="address" />
+                        <td> 
+                            <form:input path="address" placeholder="Address" name="address" id="address" />
                         </td>
                               <td><form:errors path="address" cssClass="error" /></td>
                     </tr>
                     <tr>
                         <td>
-                            <form:label path="phone">Phone</form:label>
+                            <form:label path="phone"></form:label>
                         </td>
                         <td>
-                            <form:input path="phone" name="phone" id="phone" />
+                            <form:input path="phone" placeholder="Phone" name="phone" id="phone" />
                         </td>
                         <td><form:errors path="phone" cssClass="error" /></td>
                     </tr>
@@ -108,7 +113,7 @@ if (atposition<1 || dotposition<atposition+2 || dotposition+2>=x.length){
                     <tr></tr>
                     <tr>
                         <td></td>
-                        <td><a href="home.jsp">Home</a>
+                        <td><a href="home.jsp" class="button">Home</a>
                         </td>
                     </tr>
                 </table>
